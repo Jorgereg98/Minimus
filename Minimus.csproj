@@ -37,6 +37,7 @@
       <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\SqlClient.cs" />
+    <Compile Include="DB\UserDataService.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +60,7 @@
     </Compile>
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Forecast.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Weather.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +68,7 @@
     <Compile Include="Services\Proxy\IProxyWeather.cs" />
     <Compile Include="Services\Proxy\ProxyCountry.cs" />
     <Compile Include="Services\Proxy\ProxyWeather.cs" />
+    <Compile Include="DB\UserService.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
