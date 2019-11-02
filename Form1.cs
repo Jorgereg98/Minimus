@@ -11,6 +11,7 @@ using Minimus.DB;
 using Minimus.Services;
 using Minimus.Models;
 using System.Configuration;
+using Minimus.Strategy;
 
 namespace Minimus
 {
@@ -58,10 +59,22 @@ namespace Minimus
         //AÑADIR USUARIO
         private void button1_Click(object sender, EventArgs e)
         {
+            var val1 = new MailValidation(new AtValidation(), textBox1.Text);
+            var result1 = val1.Verification();
+
+            var val2 = new MailValidation(new DomainValidation(), textBox1.Text);
+            var result2 = val2.Verification();
+
             var user = new User();
             var result = _service.Exist(textBox1.Text);
 
-            if (result == "No existe")
+            if (result1 == false || result2 == false)
+            {
+                MessageBox.Show("Su correo no tiene el formato correcto.");
+                textBox1.Text = "Email";
+                textBox2.Text = "Password";
+            }
+            else if(result == "No existe")
             {
                 textBox1.Text = "Email";
                 textBox2.Text = "Password";
@@ -85,10 +98,10 @@ namespace Minimus
                     MessageBox.Show("Bienvenido!");
                     loginVisible(false);
 
-                    
+
                 }
             }
-            
+
 
 
 
@@ -161,6 +174,11 @@ namespace Minimus
                 MessageBox.Show(password.ToString());
 
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

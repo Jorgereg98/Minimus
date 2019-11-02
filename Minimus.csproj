@@ -72,6 +72,10 @@
     <Compile Include="Services\Proxy\ProxyCountry.cs" />
     <Compile Include="Services\Proxy\ProxyWeather.cs" />
     <Compile Include="DB\UserService.cs" />
+    <Compile Include="Strategy\AtValidation.cs" />
+    <Compile Include="Strategy\DomainValidation.cs" />
+    <Compile Include="Strategy\IMailValidation.cs" />
+    <Compile Include="Strategy\MailValidation.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
