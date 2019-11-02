@@ -1,0 +1,13 @@
+C:\Users\DELL\Desktop\Minimus\Minimus\bin\Debug\Minimus.exe.config
+C:\Users\DELL\Desktop\Minimus\Minimus\bin\Debug\Minimus.exe
+C:\Users\DELL\Desktop\Minimus\Minimus\bin\Debug\Minimus.pdb
+C:\Users\DELL\Desktop\Minimus\Minimus\bin\Debug\RestSharp.dll
+C:\Users\DELL\Desktop\Minimus\Minimus\bin\Debug\RestSharp.xml
+C:\Users\DELL\Desktop\Minimus\Minimus\obj\Debug\Minimus.csprojAssemblyReference.cache
+C:\Users\DELL\Desktop\Minimus\Minimus\obj\Debug\Minimus.Form1.resources
+C:\Users\DELL\Desktop\Minimus\Minimus\obj\Debug\Minimus.Properties.Resources.resources
+C:\Users\DELL\Desktop\Minimus\Minimus\obj\Debug\Minimus.csproj.GenerateResource.cache
+C:\Users\DELL\Desktop\Minimus\Minimus\obj\Debug\Minimus.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\Minimus\Minimus\obj\Debug\Minimus.csproj.CopyComplete
+C:\Users\DELL\Desktop\Minimus\Minimus\obj\Debug\Minimus.exe
+C:\Users\DELL\Desktop\Minimus\Minimus\obj\Debug\Minimus.pdb
