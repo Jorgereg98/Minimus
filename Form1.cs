@@ -12,6 +12,7 @@ using Minimus.Services;
 using Minimus.Models;
 using System.Configuration;
 using Minimus.Strategy;
+using Minimus.Services.Proxy;
 
 namespace Minimus
 {
@@ -26,7 +27,21 @@ namespace Minimus
             _service = new UserService(connectionString);
             signupVisible(false);
 
-            
+            hide();
+        }
+
+        public void hide()
+        {
+            comboBox1.Visible = false;
+            button6.Visible = false;
+            button7.Visible = false;
+            button8.Visible = false;
+            button9.Visible = false;
+            button10.Visible = false;
+            comboBox2.Visible = false;
+            label7.Visible = false;
+            button11.Visible = false;
+            dataGridView1.Visible = false;
         }
 
         public void signupVisible(bool b)
@@ -53,7 +68,24 @@ namespace Minimus
 
         public void dashboardVisible(bool b)
         {
+            comboBox1.Visible = b;
+            label5.Visible = b;
+            button7.Visible = b;
 
+        }
+
+        public void loadData(ComboBox c)
+        {
+            IProxyCountry proxyCountry = new ProxyCountry();
+            var response3 = proxyCountry.country();
+
+            c.Visible = true;
+            button6.Visible = true;
+
+            for (int i = 0; i < response3.Count; i++)
+            {
+                c.Items.Add(response3[i].name + ", " + response3[i].capital+".");
+            }
         }
 
 
@@ -98,9 +130,13 @@ namespace Minimus
                     textBox2.Text = "";
                     MessageBox.Show("Bienvenido!");
                     label6.Visible = false;
+                    button7.Visible = true;
+                    dataGridView1.Visible = true;
 
                     signupVisible(false);
                     loginVisible(false);
+
+                    loadData(comboBox1);
 
 
                 }
@@ -165,6 +201,10 @@ namespace Minimus
                 signupVisible(false);
                 loginVisible(false);
                 label6.Visible = false;
+                button7.Visible = true;
+                dataGridView1.Visible = true;
+
+                loadData(comboBox1);
             }
             else if (result == "Existe")
             {
@@ -208,6 +248,59 @@ namespace Minimus
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            button8.Visible = true;
+            button9.Visible = true;
+            button10.Visible = true;
+            dashboardVisible(false);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Add(comboBox1.SelectedIndex);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            button8.Visible = false;
+            button9.Visible = false;
+            button10.Visible = false;
+            dashboardVisible(true);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            button8.Visible = false;
+            button9.Visible = false;
+            button10.Visible = false;
+            label5.Visible = true;
+            label6.Visible = true;
+            loginVisible(true);
+            dashboardVisible(false);
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            //textBox4.PasswordChar = 'x';
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            //textBox2.PasswordChar = 'x';
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            dashboardVisible(false);
+            label6.Visible = false;
+            hide();
+            label7.Visible = true;
+            comboBox2.Visible = true;
+            button11.Visible = true;
+            loadData(comboBox2);
         }
     }
 }
