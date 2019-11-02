@@ -58,6 +58,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataDisplay.cs" />
     <Compile Include="Models\Password.cs" />
     <Compile Include="Models\DifficultyEnum.cs" />
     <Compile Include="Models\Country.cs" />
@@ -102,6 +103,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SQL\Script.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

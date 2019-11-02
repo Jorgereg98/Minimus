@@ -19,12 +19,14 @@ namespace Minimus
     public partial class Form1 : Form
     {
         private static UserService _service;
-
+        List<string> cities = new List<string>();
+        List<DataDisplay> datacities = new List<DataDisplay>();
         public Form1()
         {
             InitializeComponent();
             var connectionString = ConfigurationManager.ConnectionStrings["SQLConnection"].ToString();
             _service = new UserService(connectionString);
+            
             signupVisible(false);
 
             hide();
@@ -84,12 +86,10 @@ namespace Minimus
 
             for (int i = 0; i < response3.Count; i++)
             {
-                c.Items.Add(response3[i].name + ", " + response3[i].capital+".");
+                c.Items.Add(response3[i].capital);
             }
         }
 
-
-        //AÑADIR USUARIO
         private void button1_Click(object sender, EventArgs e)
         {
             var val1 = new MailValidation(new AtValidation(), textBox1.Text);
@@ -256,11 +256,36 @@ namespace Minimus
             button9.Visible = true;
             button10.Visible = true;
             dashboardVisible(false);
+            dataGridView1.Visible = false;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add(comboBox1.SelectedIndex);
+            /*
+            string capital = cities[comboBox1.SelectedIndex];
+            if (!cities.Contains(capital)) cities.Add(capital);
+            
+
+            IProxyWeather proxy = new ProxyWeather();
+            dataGridView1.Rows.Clear();
+
+            for(int i = 0; i < cities.Count; i++)
+            {
+                var response = proxy.weather(cities[i]);
+                DataDisplay city = new DataDisplay();
+                city.name = response.name;
+                city.actual = response.main.temp;
+                city.max = response.main.temp_max;
+                city.min = response.main.temp_min;
+
+
+                datacities.Add(city);
+
+            }
+            BindingSource source = new BindingSource();
+            source.DataSource = datacities;
+            dataGridView1.DataSource = source;
+            */
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -269,6 +294,7 @@ namespace Minimus
             button9.Visible = false;
             button10.Visible = false;
             dashboardVisible(true);
+            dataGridView1.Visible = true;
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -280,6 +306,10 @@ namespace Minimus
             label6.Visible = true;
             loginVisible(true);
             dashboardVisible(false);
+
+            var user = new User();
+            //var result = _service.UpdateUser();
+
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -301,6 +331,11 @@ namespace Minimus
             comboBox2.Visible = true;
             button11.Visible = true;
             loadData(comboBox2);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
