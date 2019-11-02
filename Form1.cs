@@ -48,6 +48,7 @@ namespace Minimus
             textBox2.Visible = b;
             button1.Visible = b;
             button2.Visible = b;
+            
         }
 
         public void dashboardVisible(bool b)
@@ -96,6 +97,9 @@ namespace Minimus
                     textBox1.Text = "";
                     textBox2.Text = "";
                     MessageBox.Show("Bienvenido!");
+                    label6.Visible = false;
+
+                    signupVisible(false);
                     loginVisible(false);
 
 
@@ -114,6 +118,7 @@ namespace Minimus
 
             textBox3.Text = "Email";
             textBox4.Text = "Password";
+            label6.Text = "Join Mimimus Today!";
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -123,24 +128,43 @@ namespace Minimus
 
             textBox1.Text = "Email";
             textBox2.Text = "Password";
+            label6.Text = "Welcome back!";
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            /////////
+            ///
+
+            var val1 = new MailValidation(new AtValidation(), textBox3.Text);
+            var result1 = val1.Verification();
+
+            var val2 = new MailValidation(new DomainValidation(), textBox3.Text);
+            var result2 = val2.Verification();
+
             var user = new User();
+            var result = _service.Exist(textBox3.Text);
+
             user.mail = textBox3.Text;
             user.pasword = textBox4.Text;
             user.cities = "";
 
-            var result = _service.Exist(textBox3.Text);
-
-            if (result == "No existe")
+            if (result1 == false || result2 == false)
             {
-                textBox1.Text = "Email";
-                textBox2.Text = "Password";
+                MessageBox.Show("Su correo no tiene el formato correcto.");
+                textBox3.Text = "Email";
+                textBox4.Text = "Password";
+            }
+            else if (result == "No existe")
+            {
+                textBox3.Text = "Email";
+                textBox4.Text = "Password";
                 _service.AddUser(user);
 
                 MessageBox.Show("Bienvenido!");
+                signupVisible(false);
+                loginVisible(false);
+                label6.Visible = false;
             }
             else if (result == "Existe")
             {
@@ -177,6 +201,11 @@ namespace Minimus
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }
